@@ -10,6 +10,7 @@ export default {
       colors: {
         lightBg: '#F6F8FF',
         darkBg: '#141D2F',
+        darkBgsec: '#1e2a47',
       },
       fontFamily: {
         space: ['Space Mono', 'monospace'],
