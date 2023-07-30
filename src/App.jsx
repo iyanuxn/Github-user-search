@@ -66,6 +66,7 @@ function App() {
               devfinder
             </span>
             <div className="flex flex-row justify-between items-center space-x-2">
+              {/* TODO:dark and light text and icon */}
               <span className="text-slate-500 dark:text-white text-md font-semibold">
                 DARK
               </span>
@@ -181,7 +182,7 @@ function App() {
                   className={
                     website === "Website not available"
                       ? "flex flex-row text-slate-500 dark:text-white space-x-3 items-center opacity-70"
-                      : "flex flex-row text-slate-500 dark:text-white space-x-3 items-center"
+                      : "flex flex-row text-slate-500 dark:text-white space-x-3 items-center hover:underline"
                   }
                 >
                   <BsLink45Deg className="text-2xl flex-shrink-0" />
