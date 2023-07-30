@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { HiMoon } from "react-icons/hi";
 import { CiSearch } from "react-icons/ci";
 import { MdLocationPin } from "react-icons/md";
-import { BsTwitter, BsLink45Deg } from "react-icons/bs";
+import { BsTwitter, BsLink45Deg, BsFillSunFill } from "react-icons/bs";
 import { CgOrganisation } from "react-icons/cg";
 import profileimg from "./assets/Bitmap.svg";
 
@@ -65,16 +65,26 @@ function App() {
             <span className="text-2xl font-bold text-slate-800 dark:text-white">
               devfinder
             </span>
-            <div className="flex flex-row justify-between items-center space-x-2">
+            <button
+              className="flex flex-row justify-between items-center space-x-2"
+              onClick={() => setDark(dark === "dark" ? "light" : "dark")}
+            >
               {/* TODO:dark and light text and icon */}
-              <span className="text-slate-500 dark:text-white text-md font-semibold">
-                DARK
-              </span>
-              <HiMoon
-                className="text-slate-500 dark:text-white text-2xl cursor-pointer"
-                onClick={() => setDark(dark === "dark" ? "light" : "dark")}
-              />
-            </div>
+              {dark === "dark" ? (
+                <span className="text-slate-500 dark:text-white text-md font-semibold transition duration-300 ease-in-out">
+                  LIGHT
+                </span>
+              ) : (
+                <span className="text-slate-500 dark:text-white text-md font-semibold transition duration-300 ease-in-out">
+                  DARK
+                </span>
+              )}
+              {dark === "dark" ? (
+                <BsFillSunFill className="text-slate-500 dark:text-white text-2xl cursor-pointer" />
+              ) : (
+                <HiMoon className="text-slate-500 dark:text-white text-2xl cursor-pointer" />
+              )}
+            </button>
           </div>
           {/* Search */}
           <form
