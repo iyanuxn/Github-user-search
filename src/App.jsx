@@ -69,20 +69,16 @@ function App() {
               className="flex flex-row justify-between items-center space-x-2"
               onClick={() => setDark(dark === "dark" ? "light" : "dark")}
             >
-              {/* TODO:dark and light text and icon */}
               {dark === "dark" ? (
-                <span className="text-slate-500 dark:text-white text-md font-semibold transition duration-300 ease-in-out">
-                  LIGHT
-                </span>
+                <div className="flex flex-row items-center text-white space-x-3 transition duration-300 ease-in-out hover:text-slate-500">
+                  <span className="text-md font-semibold ">LIGHT</span>
+                  <BsFillSunFill className="text-2xl hover:text-back" />
+                </div>
               ) : (
-                <span className="text-slate-500 dark:text-white text-md font-semibold transition duration-300 ease-in-out">
-                  DARK
-                </span>
-              )}
-              {dark === "dark" ? (
-                <BsFillSunFill className="text-slate-500 dark:text-white text-2xl cursor-pointer" />
-              ) : (
-                <HiMoon className="text-slate-500 dark:text-white text-2xl cursor-pointer" />
+                <div className="flex flex-row items-center text-slate-500 space-x-3 transition duration-300 ease-in-out hover:text-slate-800">
+                  <span className="text-md font-semibold">DARK</span>
+                  <HiMoon className="text-2xl" />
+                </div>
               )}
             </button>
           </div>
