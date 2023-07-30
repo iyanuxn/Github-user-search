@@ -7,7 +7,7 @@ import { CgOrganisation } from "react-icons/cg";
 import profileimg from "./assets/Bitmap.svg";
 
 function App() {
-  const [dark, setDark] = useState("dark");
+  const [dark, setDark] = useState("light");
   const [profile, setProfile] = useState(profileimg);
   const [username, setUsername] = useState("The Octocat");
   const [date, setDate] = useState("25 Jan, 2011");
@@ -38,18 +38,21 @@ function App() {
     fetch(`https://api.github.com/users/${user}`)
       .then((res) => res.json())
       .then((data) => {
-        setProfile(data.avatar_url);
-        setUsername(data.name);
-        setDate(formatDate(data.created_at));
-        setUserat(data.login);
-        setBio(data.bio);
-        setRepo(data.public_repos);
-        setFollowers(data.followers);
-        setFollowing(data.following);
+        setProfile(data.avatar_url || profileimg);
+        setUsername(data.name || "No user");
+        setDate(formatDate(data.created_at) || "No date");
+        setUserat(data.login || "No user");
+        setBio(data.bio || "No bio");
+        setRepo(data.public_repos || 0);
+        setFollowers(data.followers || 0);
+        setFollowing(data.following || 0);
         setLocation(data.location || "Location not specified");
         setTwitter(data.twitter_username || "Not Available");
         setWebsite(data.blog || "Website not available");
         setOrganization(data.company || "No Organization");
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 
@@ -84,13 +87,22 @@ function App() {
                 name="searchUser"
                 id="searchUser"
                 placeholder="Search Github username_"
-                className="text-slate-400 bg-transparent text-lg w-full h-full py-3 focus:outline-none"
+                className="text-slate-800 dark:text-white bg-transparent text-lg w-full h-full py-3 focus:outline-none"
                 ref={searchUserRef}
               />
+              <span
+                className={
+                  username === "No user"
+                    ? "w-36 text-center text-red-500 font-semibold"
+                    : "hidden"
+                }
+              >
+                No results
+              </span>
             </div>
             <button
               type="submit"
-              className="bg-sky-600 text-white rounded-xl px-6 py-3 transition duration-300 ease-in-out hover:bg-sky-700"
+              className="bg-sky-600 text-white font-semibold rounded-xl px-6 py-3 transition duration-300 ease-in-out hover:bg-sky-700"
             >
               Search
             </button>
